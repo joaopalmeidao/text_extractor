@@ -12,6 +12,8 @@ load_dotenv()
 
 ENV_LOC = find_dotenv()
 
+SYSTEM = system()
+
 # //////////////////////////////////////////// 
 # Log Config:
 # //////////////////////////////////////////// 
@@ -54,3 +56,10 @@ AUTH_TOKEN=os.getenv("AUTH_TOKEN")
 
 if not AUTH_TOKEN:
     raise Exception('Configure o AUTH_TOKEN no arquivo .env')
+
+# ////////////////////////////////////////////////////////
+# CONFIGURACOES DO TESSERACT E POPPLER
+# ////////////////////////////////////////////////////////
+
+POPPLER_PATH=os.getenv("POPPLER_PATH")
+TESSERACT_CMD=os.getenv("TESSERACT_CMD")
