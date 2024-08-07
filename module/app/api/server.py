@@ -142,7 +142,7 @@ async def extract_pdf_tesseract(file: UploadFile = File(...)):
 @app.post("/extract/docx",
         description="Extracts text from a Docx using Docx library",
         tags=["Extract"])
-async def extract_pdf_docx(file: UploadFile = File(...)):
+async def extract_docx(file: UploadFile = File(...)):
 
     logger.info(f'Processing Docx file (Docx): {file.filename}')
 
