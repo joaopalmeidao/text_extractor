@@ -9,7 +9,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . ./text_extractor
 USER root
 WORKDIR /text_extractor
-EXPOSE 8000
+EXPOSE 9052
 RUN chown -R root:root /text_extractor
 RUN chmod +x entrypoint.sh
 ENTRYPOINT ["./entrypoint.sh"]
