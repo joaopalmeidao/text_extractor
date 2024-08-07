@@ -48,4 +48,3 @@ async def extract_file(file: UploadFile = File(...)):
     except Exception as e:
         logger.error(e, exc_info=True)
         raise HTTPException(status_code=500, detail='Erro ao processar o arquivo')
-
