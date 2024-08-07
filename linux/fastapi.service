@@ -1,0 +1,12 @@
+[Unit]
+Description=Api Text Extractor
+After=network.target
+[Service]
+EnvironmentFile=/etc/environment
+User=renato.ferreira
+WorkingDirectory=/home/renato.ferreira/repositorio_producao/text_extractor
+ExecStart=/home/renato.ferreira/repositorio_producao/text_extractor/venv/bin/python -m uvicorn wsgi:app --reload --port 8000 --host 0.0.0.0
+Restart=always
+RestartSec=5s
+[Install]
+WantedBy=multi-user.target
