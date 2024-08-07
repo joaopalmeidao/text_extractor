@@ -30,9 +30,8 @@ def extract_from_audio_wav(wav_io):
     }
     
     # Usa o BytesIO como fonte de áudio para o reconhecedor de fala
-    sample_audio = sr.AudioFile(wav_io)
-    r = sr.Recognizer()
-    with sample_audio as source:
+    with sr.AudioFile(wav_io) as source:
+        r = sr.Recognizer()
         audio = r.record(source)
     
     # Reconhece o texto do áudio
