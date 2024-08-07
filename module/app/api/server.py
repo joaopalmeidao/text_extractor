@@ -11,8 +11,6 @@ from module.robot.extractor.docx import extract_text_from_docx_bytes
 
 from module import __version__
 
-from .auth import decode_token
-
 
 app = FastAPI(
     title='Api Text Extractor',
