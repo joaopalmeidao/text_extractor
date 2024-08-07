@@ -29,8 +29,11 @@ async def extract_file(file: UploadFile = File(...)):
     try:
         extensions = (
             '.pdf',
+            
             '.mp3',
+            
             '.docx',
+            
             '.png',
             '.jpg',
             '.jpeg',
@@ -75,7 +78,7 @@ async def extract_mp3(file: UploadFile = File(...)):
     logger.info(f'Processing MP3 file: {file.filename}')
 
     try:
-        extensions = ('.pdf')
+        extensions = ('.mp3')
         
         # Read MP3 content
         contents = await file.read()
