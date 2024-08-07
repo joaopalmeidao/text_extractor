@@ -72,7 +72,7 @@ def process_pdf(file):
         text_+=text
 
     if not text_:
-        raise Exception('Não foi possível extrair texto do PDF')
+        raise Exception('Não foi possível extrair texto')
 
     return doc
 

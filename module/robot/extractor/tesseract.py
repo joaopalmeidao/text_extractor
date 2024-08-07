@@ -2,6 +2,7 @@ import pytesseract
 import os
 from pdf2image import convert_from_path, convert_from_bytes
 from io import BytesIO
+from PIL import Image
 
 
 # TODO: Deixar configuravel para o usuario windows e remover caso esteja no linux
@@ -24,7 +25,7 @@ def extract_text(images):
         text_+=text
     
     if not text_:
-        raise Exception('Não foi possível extrair texto do PDF')
+        raise Exception('Não foi possível extrair texto')
     
     return doc
 
@@ -44,5 +45,14 @@ def extract_text_tesseract_pdf_bytes(pdf_bytes):
     
     # Converter PDF em imagens
     doc = extract_text(images)
+    
+    return doc
+
+def extract_text_tesseract_image_bytes(img_bytes):
+    
+    image = Image.open(BytesIO(img_bytes))
+    
+    # Converter PDF em imagens
+    doc = extract_text([image])
     
     return doc

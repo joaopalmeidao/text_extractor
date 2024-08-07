@@ -3,7 +3,6 @@ from platform import system
 from dotenv import load_dotenv, find_dotenv
 import json
 import os
-import pyodbc
 import socket
 
 from module.directory import WORK_DIR
