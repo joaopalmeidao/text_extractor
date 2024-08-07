@@ -40,10 +40,10 @@ async def extract_file(file: UploadFile = File(...)):
             response = extract_from_audio_mp3(contents)
         
         else:
-            raise HTTPException(status_code=500, detail='Tipo de arquivo não suportado')
+            raise Exception('Tipo de arquivo não suportado')
         
         return {"filename": file.filename, "content": response}
     
     except Exception as e:
         logger.error(e, exc_info=True)
-        raise HTTPException(status_code=500, detail='Erro ao processar o arquivo')
+        raise HTTPException(status_code=500, detail=str(e))
