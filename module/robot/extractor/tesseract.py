@@ -3,6 +3,8 @@ import os
 from pdf2image import convert_from_path, convert_from_bytes
 from io import BytesIO
 
+
+# TODO: Deixar configuravel para o usuario windows e remover caso esteja no linux
 poppler_path = r'C:\poppler-23.08.0\Library\bin'  # Atualize com o caminho correto
 tesseract_cmd = r'F:\Program Files\Tesseract-OCR\tesseract.exe'  # Atualize com o caminho correto
 pytesseract.pytesseract.tesseract_cmd = tesseract_cmd
