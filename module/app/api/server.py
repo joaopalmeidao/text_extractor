@@ -96,7 +96,7 @@ async def extract_file(file: UploadFile = File(...)):
             detail=dict(
                 message=str(e),
                 step=step,
-                class_name=e.__class__.__name__,
+                class_name=str(e.__class__),
                 )
             )
     
