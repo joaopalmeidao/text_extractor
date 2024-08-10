@@ -114,7 +114,7 @@ async def extract_file(file: UploadFile = File(...)):
             500: {"model": ValidationErrorResponse, "description": "Validation Error"}
         },
         )
-async def extract_mp3(file: UploadFile = File(...)):
+async def extract_audio(file: UploadFile = File(...)):
 
     logger.info(f'Processing MP3 file: {file.filename}')
 
