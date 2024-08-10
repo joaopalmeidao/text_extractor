@@ -9,6 +9,7 @@ from module.robot.extractor.tesseract import (
     )
 from module.robot.extractor.audio import extract_from_audio
 from module.robot.extractor.docx import extract_text_from_docx_bytes
+from .models import ValidationErrorResponse, ExtractResponse
 
 from module import __version__
 
@@ -20,7 +21,12 @@ app = FastAPI(
 
 @app.post("/extract/all", 
         description='Extracts text from different extensions file.',
-        tags=['Default'])
+        tags=['Default'],
+        response_model=ExtractResponse,
+        responses={
+            500: {"model": ValidationErrorResponse, "description": "Validation Error"}
+        },
+        )
 async def extract_file(file: UploadFile = File(...)):
     
     step = None
@@ -102,7 +108,12 @@ async def extract_file(file: UploadFile = File(...)):
     
 @app.post("/extract/audio",
         description="Extracts text from an aduio audio file.",
-        tags=["Extract"])
+        tags=["Extract"],
+        response_model=ExtractResponse,
+        responses={
+            500: {"model": ValidationErrorResponse, "description": "Validation Error"}
+        },
+        )
 async def extract_mp3(file: UploadFile = File(...)):
 
     logger.info(f'Processing MP3 file: {file.filename}')
@@ -133,7 +144,12 @@ async def extract_mp3(file: UploadFile = File(...)):
 
 @app.post("/extract/pdf/pypdf2",
         description="Extracts text from a PDF using PyPDF2 library.",
-        tags=["Extract"])
+        tags=["Extract"],
+        response_model=ExtractResponse,
+        responses={
+            500: {"model": ValidationErrorResponse, "description": "Validation Error"}
+        },
+        )
 async def extract_pdf_pypdf2(file: UploadFile = File(...)):
 
     logger.info(f'Processing PDF file (PyPDF2): {file.filename}')
@@ -157,7 +173,12 @@ async def extract_pdf_pypdf2(file: UploadFile = File(...)):
 
 @app.post("/extract/pdf/tesseract",
         description="Extracts text from a PDF using Tesseract library",
-        tags=["Extract"])
+        tags=["Extract"],
+        response_model=ExtractResponse,
+        responses={
+            500: {"model": ValidationErrorResponse, "description": "Validation Error"}
+        },
+        )
 async def extract_pdf_tesseract(file: UploadFile = File(...)):
 
     logger.info(f'Processing PDF file (Tesseract): {file.filename}')
@@ -181,7 +202,12 @@ async def extract_pdf_tesseract(file: UploadFile = File(...)):
     
 @app.post("/extract/docx",
         description="Extracts text from a Docx using Docx library",
-        tags=["Extract"])
+        tags=["Extract"],
+        response_model=ExtractResponse,
+        responses={
+            500: {"model": ValidationErrorResponse, "description": "Validation Error"}
+        },
+        )
 async def extract_docx(file: UploadFile = File(...)):
 
     logger.info(f'Processing Docx file (Docx): {file.filename}')
@@ -204,7 +230,12 @@ async def extract_docx(file: UploadFile = File(...)):
 
 @app.post("/extract/image",
         description="Extracts text from a image using Tesseract library",
-        tags=["Extract"])
+        tags=["Extract"],
+        response_model=ExtractResponse,
+        responses={
+            500: {"model": ValidationErrorResponse, "description": "Validation Error"}
+        },
+        )
 async def extract_image_text(file: UploadFile = File(...)):
     try:
         extensions = ('.png', '.jpg', '.jpeg')
