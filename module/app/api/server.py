@@ -2,13 +2,13 @@ from fastapi import FastAPI, HTTPException, File, UploadFile
 import os
 
 from module.core.customlogger import logger
-from module.robot.extractor.pdf import extract_text_from_pdf_bytes
-from module.robot.extractor.tesseract import (
+from module.core.extractor.pdf import extract_text_from_pdf_bytes
+from module.core.extractor.tesseract import (
     extract_text_tesseract_pdf_bytes,
     extract_text_tesseract_image_bytes
     )
-from module.robot.extractor.audio import extract_from_audio
-from module.robot.extractor.docx import extract_text_from_docx_bytes
+from module.core.extractor.audio import extract_from_audio
+from module.core.extractor.docx import extract_text_from_docx_bytes
 from .models import ValidationErrorResponse, ExtractResponse
 
 from module import __version__
